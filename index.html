@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richiesta Ufficiale - Richalto</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.8em;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #003366;
+        }
+        .countdown {
+            font-size: 1.4em;
+            margin: 10px 0;
+            color: #990000;
+        }
+        .button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        .terms {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Notifica Ufficiale - Nobody & Richalto
+    </header>
+    <div class="container">
+        <h1>Richiesta di Adempimento Contrattuale</h1>
+        <p>
+            In conformità con gli accordi impliciti stabiliti durante le cerimonie di Comunione e Cresima, 
+            si richiede il pagamento della somma dovuta, come segue:
+        </p>
+        <ul>
+            <li>300 €: Importo per la Comunione.</li>
+            <li>1300 €: Danni morales per ritardi nel pagamento.</li>
+            <li>50 €: Danni patrimoniali per il regalo <em>World of Football</em>.</li>
+        </ul>
+        <p><strong>Totale richiesto: 1650 €</strong></p>
+        <p class="countdown" id="countdown">Scadenza pagamento: Calcolo in corso...</p>
+        <button class="button" onclick="acceptPayment()">Effettua il pagamento</button>
+
+        <h2>Termini e Condizioni</h2>
+        <div class="terms">
+            <p>
+                La presente richiesta è formulata in conformità con gli accordi sottoscritti implicitamente. 
+                L'importo dovrà essere versato entro la scadenza indicata (18 anni dalla data odierna) e potrà essere corrisposto 
+                tramite i canali accettati. 
+            </p>
+            <p>
+                Il mancato adempimento comporterà una richiesta supplementare per danni accessori, da calcolarsi 
+                in base al tasso legale applicabile. L'accettazione del pagamento costituisce conferma di lettura 
+                e accettazione dei presenti termini.
+            </p>
+        </div>
+    </div>
+    <footer>
+        © 2024 Nobody & Richalto. Tutti i diritti riservati.
+    </footer>
+    <script>
+        // Countdown di 18 anni
+        const countdownElement = document.getElementById('countdown');
+        const deadline = new Date();
+        deadline.setFullYear(deadline.getFullYear() + 18);
+
+        function updateCountdown() {
+            const now = new Date();
+            const difference = deadline - now;
+
+            if (difference <= 0) {
+                countdownElement.textContent = "Tempo scaduto! 💥";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((difference / (1000 * 60)) % 60);
+            const seconds = Math.floor((difference / 1000) % 60);
+
+            countdownElement.textContent = `Tempo rimanente: ${days} giorni, ${hours} ore, ${minutes} minuti, ${seconds} secondi`;
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // Funzione di accettazione del pagamento
+        function acceptPayment() {
+            alert("Pagamento accettato! Confermiamo la ricezione. ");
+        }
+    </script>
+</body>
+</html>
